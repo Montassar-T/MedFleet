@@ -1,0 +1,23 @@
+<div class="container-fluid  ">
+    <h2 id="logo" [routerLink]="['/login']" routerLinkActive="active">MedFleet</h2>
+    <div class="box">
+        <img src="../../assets/icons/lock-circle.svg" alt="Lock Circle Icon" width="160" height="160" >
+        <span>Entrez le code de sécurité</span>
+        <p>Merci de vérifier dans vos e-mails que vous avez reçu un message avec votre code. Celui-ci est composé de 6 chiffres.</p>
+       <form (ngSubmit)="verify()" [formGroup]="verifForm">
+        <div class="input-group">
+            <div class="input-container">
+                <input type="text" [class.is-invalid]="invalid" formControlName="code"  (input)="touched()" required>
+                <label for="">Entrer le code</label>
+            </div>
+            <div class="message"  *ngIf="invalid == true">Code invalide.</div>
+
+        </div>  
+        <button id="next" type="submit">Continuer</button>
+       </form>
+        <div class="bottom">
+            <a [routerLink]="['/login']" routerLinkActive="active" >Revenir à l'écran de connexion</a>
+        </div>
+    </div>
+    <span id="rights">all rights reserved © 2024</span>
+</div>

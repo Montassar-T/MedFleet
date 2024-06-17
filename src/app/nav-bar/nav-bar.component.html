@@ -1,0 +1,73 @@
+<div class="container-fluid ">
+    <ul >
+        <li id="notif">
+        <div (click)="show()" id="bell"  >
+            <img src="../../assets/icons/notification.svg"   alt="">
+            <div id="nb" *ngIf="nb>0">{{nb}}</div>
+        </div>
+            <div id="notifb" *ngIf=" hide == false">
+                <div class="notif_head">
+                    <span>Notifications</span>
+                    <img src="../../assets/icons/task.svg" (click)="checkAll()" style="cursor: pointer;" alt="">
+                    
+                </div>
+                <div class="wrap">
+                    <div *ngIf=" notifs.length == 0" id="msg">
+                        No notifications!
+                    </div>
+                <div class="notif_body" *ngFor="let n of notifs"   [ngStyle]="{'background-color': !n.checked ? '#eeeeee' : '#ffffff' }">
+                    <div class="notific">
+                        <img src="../../assets/icons/x.svg" style="cursor: pointer;"  class="d" (click)="deleteNotif(n.id)">
+                        <div class="img">
+                            <img src="../../assets/icons/car3.svg" alt="">
+                            
+
+                        </div>
+                    <div class="not">
+                        <div class="des">Entretien recommandé pour votre <br><strong>{{n.name}}</strong> ({{n.imma}}).
+                        </div>
+                        <div class="time">{{timeAgo(n.created_at)}}</div>
+                    </div>
+                </div>
+
+                </div>
+              
+             
+            </div>
+            </div>
+        </li>
+        <li>
+            <div class="user" (click)="nav()">
+                <div class="identifier" style="user-select: none;">
+                    <span id="name">{{user.username }}</span>
+                    <span id="organization">{{ user.organization }}</span>
+                </div>
+                <div class="img-cont">          
+                    <img style=" cursor: pointer;" [src]=" url ||'../../assets/img/user.png'" alt="User Profile" (click)="showX()" referrerpolicy="no-referrer">
+                  
+                     <div class="x"   *ngIf=" under ">
+                       <img id="hi" [src]=" url || '../../assets/img/user.png'" alt=""  referrerpolicy="no-referrer">
+                       <span>Tayari Montassar</span>
+                       
+                       <ul>
+                        <li style=" margin: 1em 0;" (click)="showX()">
+                            <a [routerLink]="['settings']" routerLinkActive="active">
+                                <img src="../../assets/icons/setting3.svg" alt="" >
+                                <span>Paramètres</span>
+                            </a>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <a (click)="logout()" >
+                                <img src="../../assets/icons/logout-1.svg" alt="">
+                                <span>Se Déconnecter</span>
+                            </a>
+                        </li>
+                       </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </li>
+    </ul>
+
+</div>

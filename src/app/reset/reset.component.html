@@ -1,0 +1,29 @@
+<div class="container-fluid">
+    <h2 id="logo" [routerLink]="['/login']" routerLinkActive="active">MedFleet</h2>
+    <div class="box">
+        <img src="../../assets/icons/lock-circle.svg" alt="Lock Circle Icon" width="160" height="160" >
+        <span>Choisissez un nouveau mot de passe</span>
+        <p>Créez un mot de passe d'au moins 6 caractères.</p>
+       <form  (ngSubmit)="reset()" [formGroup]="resetForm">
+        <div class="input-group">
+            <div class="input-container">
+                <img src="../../assets/icons/show.svg" id="show" (click)="show()" alt="">
+
+                <input  [type]="hide ? 'password' : 'text'"  [class.is-invalid]="mdp?.invalid && mdp?.touched" required formControlName="mdp">
+                <label for="">Nouveau mot de passe</label>
+            </div>
+            <div class="message" *ngIf="resetForm.get('mdp')?.invalid && resetForm.get('mdp')?.touched "  >
+                <div *ngIf="resetForm.get('mdp')?.errors?.['required']">Mot de passe requis.
+                </div>    
+                
+          
+              </div>
+        </div>  
+        <button id="next" [disabled]="resetForm.invalid" type="submit">Continuer</button>
+       </form>
+        <div class="bottom">
+            <a [routerLink]="['/login']" routerLinkActive="active" >Revenir à l'écran de connexion</a>
+        </div>
+    </div>
+    <span id="rights">all rights reserved © 2024</span>
+</div>

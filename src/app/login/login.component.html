@@ -1,0 +1,102 @@
+<div class="cont">
+<div class="left">
+    <h2>Se connecter</h2>
+    
+    <form (ngSubmit)="login()" [formGroup]="loginForm">
+      <div class=" d-flex  align-items-center justify-content-center">
+      
+           <div id="google-login-button">
+
+        <div id="g_id_onload"
+        data-client_id="903178606296-okr46g353c0rhtb756875v66l0kn4tgn.apps.googleusercontent.com"
+        data-context="signin"
+        data-ux_mode="popup"
+        data-login_uri="http://localhost:3000/api/login"
+        data-nonce=""
+        data-itp_support="true">
+   </div>
+   
+   <div class="g_id_signin"
+        data-type="standard"
+        data-shape="rectangular"
+        data-theme="outline"
+        data-text="signin_with"
+        data-size="large"
+        data-logo_alignment="center"
+        data-width="400">
+   </div>
+  </div>
+         
+       
+      </div>
+      <div class="or-line">
+        <span class="or-text">or</span>
+      </div>
+
+    
+      <div class="input-group">
+        <div class="input-container">
+          <input type="email" [class.is-invalid]="email?.invalid && email?.touched" formControlName="email"  (input)="touch()"   required >
+          <label  for="email">Email</label>
+        </div>
+        
+        <div class="message" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" >
+          <div *ngIf="loginForm.get('email')?.errors?.['required']">Email requis.</div>
+          <div *ngIf="loginForm.get('email')?.errors?.['email']">Format d'email invalide.
+          </div>
+        </div>
+      </div>
+       
+  
+      
+        <div class="input-group">
+          <div class="input-container">
+            <img src="../../assets/icons/show.svg" id="show" (click)="show()" alt="">
+
+            <input [class.is-invalid]="password?.invalid && password?.touched" 
+            name="password" 
+            [type]="hide ? 'password' : 'text'"  
+            formControlName="password" 
+            id="password" 
+            [autocomplete]="null"
+            (input)="touch()"
+            required>            <label class="form-label" for="password">Mot de passe</label>
+          </div>
+          <div style="display: flex;">
+          <div class="message" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched || invalid">
+            <div *ngIf="loginForm.get('password')?.errors?.['required'] && !invalid">Mot de passe requis.
+            </div>    
+            <div  *ngIf="invalid == true">Données invalide.</div>
+      
+          </div>
+          <a  style="margin-left: auto;" id="forgotten" [routerLink]="['/password/identify']" routerLinkActive="active">Mot de passe oublié?</a>
+        </div>
+
+        </div>
+        
+        
+      
+         
+        <button id="connect" [disabled]="loginForm.invalid" type="submit">Connexion</button>
+        <span id="yet">Pas encore inscrit? <a [routerLink]="['/sign-up']" routerLinkActive="active">créer un compte</a></span>
+      </form>
+
+      
+      
+    <span id="rights">all rights reserved © 2024</span>
+
+</div>
+
+
+<div class="right">
+    <div>
+        <h2>
+            MedFleet
+        </h2>
+        <div class="slogan">
+        <p>Roulez en toute confiance</p>
+        <p>Gérez en toute simplicité</p>
+        </div>
+    </div>
+</div>
+</div>

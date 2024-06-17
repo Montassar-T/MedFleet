@@ -1,0 +1,1 @@
+<app-table [type]="'repairs'"  (all)="deleteTab($event)"   [new]="new" [entities]="entities" [filtered]="filtered"  [columns]="['des','cout', 'date']" [columnMapping]="{'cout':'coût' , 'des': 'description'}" [isVeh]="false"  (onDelete)="deleteEntity($event)"  (onSave)="modifEntity($event)" (onAdd)="addNew($event)" ></app-table>

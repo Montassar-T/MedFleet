@@ -1,0 +1,106 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    background-color: #5A57FF;
+    height: 100vh;
+    padding-top: 3em;
+    padding-inline: 0;
+    
+
+    
+    box-sizing: border-box;
+}
+
+#logo{
+    margin: 0 auto;
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+img{
+    width: 24px;
+    height: 24px;
+    margin-right: .5em;
+}
+a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+
+    
+    
+}
+a span{
+    color: #C2C0FF;
+    font-size: .9rem;
+
+}
+
+
+li{
+    list-style: none;
+    margin: 1em 0 1em 0;
+    width: max-content;
+    padding: 1rem 4rem;
+  
+}
+
+
+li:has(a.active){
+    border-left: 4px solid #ffffff;
+    background-color: #35353520;
+    
+    
+}
+/*
+.container ul:last-child  {
+   
+   border: 1px solid black;
+   flex: 1;
+  
+   
+   
+ 
+}
+*/
+
+
+
+ul{
+    margin-top: 4em;
+    flex: 1;
+   position: relative;
+   padding-left: 0;
+   margin-left: 0;
+   
+   width: 100%;
+}
+.bottom{
+    margin-top: 5px;
+    padding: 0;
+    position: absolute;
+
+    bottom: 0;
+    
+    width: 100%;
+}
+
+
+
+.touched{
+    position: relative;
+}
+.touched ::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background-color: #ffffff;
+}

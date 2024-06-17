@@ -1,0 +1,105 @@
+<div class="cont">
+    <div class="left">
+        <h2>S'incrire</h2>
+        <form (ngSubmit)="signUp()" [formGroup]="signUpForm">
+            
+            <div id="g_id_signup" class=" container d-flex  align-items-center justify-content-center">
+
+            <div id="g_id_onload"
+     data-client_id="903178606296-okr46g353c0rhtb756875v66l0kn4tgn.apps.googleusercontent.com"
+     data-context="signup"
+     data-ux_mode="popup"
+     data-login_uri="http://localhost:3000/api/signup"
+     data-nonce=""
+     data-itp_support="true">
+</div>
+
+<div class="g_id_signin"
+     data-type="standard"
+     data-shape="rectangular"
+     data-theme="outline"
+     data-text="signup_with"
+     data-size="large"
+     data-logo_alignment="center"
+     data-width="300">
+     
+
+</div>
+            </div>
+            <div class="or-line">
+                <span class="or-text">or</span>
+              </div>
+        
+            <div class="input-group">
+
+            <div class="input-container">
+                <input type="text" [class.is-invalid]="name?.invalid && name?.touched" formControlName="name" required  >
+                <label>Nom complet</label>
+            </div>
+            <div class="message" *ngIf="signUpForm.get('name')?.invalid && signUpForm.get('name')?.touched">
+                <div *ngIf="signUpForm.get('name')?.errors?.['required']">Nom requis.</div>
+              </div>
+
+        </div>
+
+
+            <div class="input-group">
+
+            <div class="input-container">
+                <input type="text" name="org"  [class.is-invalid]="organization?.invalid && organization?.touched" required formControlName="organization" >
+                <label>Organisation</label>
+            </div>
+            <div  class="message" *ngIf="signUpForm.get('organization')?.invalid && signUpForm.get('organization')?.touched">
+                <div *ngIf="signUpForm.get('organization')?.errors?.['required']">Organisation requis.</div>
+              </div>
+            
+        </div>
+            <div class="input-group">
+
+            <div class="input-container">
+                <input type="email" [class.is-invalid]="email?.invalid && email?.touched" required  formControlName="email" autocomplete="off" >
+                <label for="email">Email</label>
+            </div>
+            <div class="message" *ngIf="signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched || exists">
+                <div *ngIf="signUpForm.get('email')?.errors?.['required']">Email requis.</div>
+                <div *ngIf="signUpForm.get('email')?.errors?.['email']">Format d'email invalide.</div>
+                <div  *ngIf="exists == true">Email déja exist.</div>
+
+              </div>
+
+        </div>
+            <div class="input-group">
+
+            <div class="input-container">
+                <img src="../../assets/icons/show.svg" id="show" (click)="show()" alt="">
+
+                <input [type]="hide ? 'password' : 'text'"  [class.is-invalid]="password?.invalid && password?.touched" formControlName="password" required >
+                <label>Mot de passe</label>
+            </div>
+            <div class="message" *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched">
+                <div *ngIf="signUpForm.get('password')?.errors?.['required']">Mot de passe requis.
+                </div>
+              </div>
+        </div>
+        
+            <button type="submit" [disabled]="signUpForm.invalid">Inscription</button>
+            <span id="yet">Avez déja un compte? <a [routerLink]="['/login']" routerLinkActive="active">se connecter</a></span>
+        </form>
+        
+        <span id="rights">all rights reserved © 2024</span>
+    
+    </div>
+    
+    
+    <div class="right">
+        <div>
+            <h2>
+                MedFleet
+            </h2>
+            <div class="slogan">
+            <p>Roulez en toute confiance</p>
+            <p>Gérez en toute simplicité</p>
+            </div>
+        </div>
+    </div>
+    </div>

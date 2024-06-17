@@ -1,0 +1,6 @@
+<div class="container-fluid">
+    <h2>Missions</h2>
+        <app-table  [type]="'missions'" [miss]="true" (all)="deleteTab($event)" [new]="new" [veh]="veh"   [dri]="dri" [entities]="entities" [filtered]="filtered" [columns]="['veh_id','driver_id','dest', 'date']" [columnMapping]="{'veh_id' : 'Véhicule', 'dest':'destination' , 'driver_id':'chauffeur'}" [isVeh]="false" (onDelete)="deleteEntity($event)"  (onSave)="modifEntity($event)" (onAdd)="addNew($event)" ></app-table>
+ 
+  
+</div>

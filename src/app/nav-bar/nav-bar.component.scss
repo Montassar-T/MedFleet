@@ -1,0 +1,234 @@
+.container-fluid ul{
+    display: flex;
+    align-items: center;
+    flex: 1;
+    list-style: none;
+    justify-content: space-between;
+    
+    
+    padding: .5em 3em;
+}
+.user{
+    display: flex;
+    align-items: center;
+   
+    position: relative;
+
+ 
+}
+.identifier{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right:.5em
+}
+.user img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+#name{
+    font-size: 14px;
+}
+#organization{
+    font-size: 13px;
+    color: #cccccc;
+}
+#notif{
+    cursor: pointer;
+    position: relative;
+
+}
+#hi{
+    width: 70px !important;
+    height: 70px !important;
+}
+#bell{
+    z-index: 10000;
+    position: relative;
+}
+#bell img{
+    transform: scale(1.1);
+}
+#nb{
+    
+    position: absolute;
+    width: 16px;
+    aspect-ratio: 1;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: .6rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0;
+    background-color: red;
+    
+    
+    
+}
+#notifb{
+    background-color: #ffffff;
+    position: absolute;
+   cursor: auto;
+    transform: translate(-6%,3%);
+    z-index: 1;
+    min-width: 420px;
+  
+}
+
+.time{
+    font-size: .8rem;
+}
+.notif_head{
+    background-color: #5A57FF;
+    padding: 1rem .5em 1em 1em;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    user-select: none;
+}
+.notif_head span{
+    color: #ffffff;
+    margin-right: 2rem;
+}
+
+.notif_body{
+    border-bottom: 1px solid #cccccc;
+    height: 99px;
+}
+
+.notific{
+    display: flex;
+    padding: 1rem;
+    position: relative;
+}
+.d{
+    position: absolute;
+    right: 2%;
+    transform: scale(.8);
+    z-index: 100;
+    
+}
+#msg{
+    padding: 1.5em;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.wrap{
+    max-height: calc(99px * 3);
+   
+    overflow-y: auto;
+}
+@media all and (-webkit-min-device-pixel-ratio: 0) {
+    /* Styles for scrollbar width, color, etc. */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+}
+.notific .img{
+    
+    margin-right: 1rem;
+}
+
+#notif img{
+    width: 25px;
+}
+
+.notif_head::before{
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: calc(6% + .325em);
+    top: 0;
+    transform: translateY(-100%);
+    border-left: 10px solid transparent; /* Adjust size as needed */
+    border-right: 10px solid transparent; /* Adjust size as needed */
+    border-bottom:10px solid #5A57FF; /* Adjust size and color as needed *///border: 3px solid black;
+    
+
+    
+}
+
+
+.x{
+    background-color: #ffffff;
+    border: 1px solid #d1d1d1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+    position: absolute;
+    right: -12%;
+    bottom: -640%;
+    z-index: 1;
+   
+}
+.x ul{
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+    border-top: 1px solid #353535;
+    padding-left: 0;
+  
+}
+.x img{
+    margin-bottom: .5em;
+    width: 50px;
+    aspect-ratio: 1/1;
+}
+.x span{
+    font-weight: bold;
+    margin-bottom: 1em;
+    color: #353535;
+
+}
+.x li a{
+    display: flex;
+    flex-wrap: nowrap;
+    
+    width: 180px;
+    text-decoration: none;
+    color: #353535;
+
+ 
+   
+}
+
+.x li a img{
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.x::before{
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: calc(11% + .325em);
+    top: 0;
+    transform: translateY(-100%);
+    border-left: 10px solid transparent; /* Adjust size as needed */
+    border-right: 10px solid transparent; /* Adjust size as needed */
+    border-bottom:10px solid #ffffff; /* Adjust size and color as needed *///border: 3px solid black;
+    
+
+    
+}

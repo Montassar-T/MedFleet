@@ -1,0 +1,4 @@
+<div class="container-fluid">
+    <h2>Chauffeurs</h2>
+    <app-table [type]="'chauffeurs'" (all)="deleteTab($event)" [new]="new"  [entities]="entities" [filtered]="filtered" [columns]="['nom','prenom','tlf','classement']" [columnMapping]="{'prenom': 'prénom', 'tlf': 'numéro de téléphone' }" [isVeh]="false" (onDelete)="deleteEntity($event)"  (onSave)="modifEntity($event)" (onAdd)="addNew($event)" ></app-table>
+</div>

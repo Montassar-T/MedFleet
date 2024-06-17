@@ -1,0 +1,157 @@
+.container{
+    display: flex;
+    flex-direction: column; 
+}
+
+
+
+
+
+
+input[type="checkbox"] {
+    appearance: none;
+margin: auto;
+    -webkit-appearance: none;
+    width: 20px;
+    padding: .7em;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    background-color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+   
+}
+input[type="checkbox"]::after{
+    content: "\f00c";
+
+    font-family:"Font Awesome 5 Free" ;
+    font-weight: 600;
+    font-size: .7rem;
+    color:#ffffff ;
+    display: none;
+}
+input[type="checkbox"]:hover{
+    background-color: #cccccc;
+}
+input[type="checkbox"]:checked{
+    background-color: #5A57FF;
+}
+input[type="checkbox"]:checked::after{
+  display: block;
+}
+.table{
+    background-color: #ffffff;
+    height: calc(48px *11);
+    border-radius: 15px;
+    margin: 1em 0;
+}
+
+
+img{
+    height: 24px;
+    margin-inline: .2em ;
+}
+#dispo{
+    background-color: #C6FCEC;
+    border-radius: 24px;
+    color:#4B8790;
+    position: relative;
+    padding: 0 .5em 0 .9em;
+ 
+}
+#dispo::before{
+    content: "";
+    position: absolute;
+    left: .2em;
+    top: 50%;
+    height: 8px;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    aspect-ratio: 1/1;
+    background-color: #4B8790;
+}
+#nondispo{
+    background-color: #FE9C9C;
+    border-radius: 24px;
+    color:#F12727;
+    position: relative;
+    padding: 0 .5em 0 .9em;
+ 
+}
+#nondispo::before{
+    content: "";
+    position: absolute;
+    left: .2em;
+    top: 50%;
+    height: 8px;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    aspect-ratio: 1/1;
+    background-color: #F12727;
+}
+
+.actions img{
+    cursor: pointer;
+}
+
+.button , .search{
+    display: flex;
+    border:1px solid #cccccc ;
+    width: fit-content;
+    border-radius: 24px;
+    background-color: #ffffff;
+}
+.button{
+    padding: .6em 1em;
+    cursor: pointer;
+}
+
+.controle{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.r,.l{
+    display: flex;
+  
+    gap: 10px;
+    
+}
+
+
+.search{
+    align-items: center;
+    overflow: hidden;
+    padding-left: .5em;
+  
+}
+
+
+.search input{
+    height: 100%;
+    border: none;
+    font-size: 1rem;
+    padding-left:.5em;
+    outline: none;
+    
+}
+
+.search input::placeholder{
+   color: #4B8790;
+    
+}
+.search img{
+    cursor: pointer;
+}
+
+.disabled{
+    background-color: #f2f2f2 !important;
+    color: #999999 !important;
+    cursor: not-allowed !important;
+}
+

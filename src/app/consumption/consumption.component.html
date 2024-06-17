@@ -1,0 +1,6 @@
+
+<app-table [type]="'consumptions'"  (all)="deleteTab($event)"   [new]="new" [entities]="entities" [filtered]="filtered"  [columns]="['numCarte','cout','litrage', 'date']" [columnMapping]="{'numCarte': 'Numéro Carte' , 'cout':'coût'}" [isVeh]="false"  (onDelete)="deleteEntity($event)"  (onSave)="modifEntity($event)" (onAdd)="addNew($event)" ></app-table>
+
+
+
+

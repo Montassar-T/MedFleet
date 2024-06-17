@@ -1,0 +1,216 @@
+
+<div class="container-fluid">
+<div class="row justify-content-between pt-4">
+    
+    <div class="col-auto d-flex align-items-center">
+        <!--  -->
+        <div style=" position: relative;">
+           <!--  <div class="button filter" (click)="setX(true)" >
+            <img src="../../assets/icons/filter.svg" alt="">
+            Filtre
+           
+        </div> -->
+      
+        
+    </div>
+     
+        <div class="search mx-2">
+            <img src="../../assets/icons/search-normal-1.svg" alt="">
+           <input type="text" placeholder="Rechercher ..." [(ngModel)]="text" (input)="updateFiltered()">
+           
+        </div>
+        <div class="button supp" (click)="dAll()"  [ngClass]="{'disabled' : ids.length == 0}">
+            <img src="../../assets/icons/trash.svg" alt="">
+            Supprimer
+        </div>
+    </div>
+    <div class="col-auto d-flex ">
+        <div (click)="exportToExcel()" class="button"  [ngClass]="{'disabled' : entities.length == 0}" >
+            <img    src="../../assets/icons/export.svg" alt="">
+            Exporter
+        </div>
+        <!--  <div class="button mx-2">
+            <img src="../../assets/icons/frame-2.svg" alt="">
+            Importer
+        </div> -->
+       
+        <div class="button add ms-2" [ngClass]="{'disabled' : isAddingNew || (miss && isEmpty()) || ids.length >0}" (click)="setAdding()">
+            <img src="../../assets/icons/add-circle.svg" alt="" >
+            Ajouter
+        </div>
+    </div>
+
+</div>
+<div class="table-container my-3">
+    <table class="table table-hover">
+
+        <thead>
+            <tr>
+                <th id="testy">
+                    <input type="checkbox" id="check" [checked]="allChecked " (click)="toggleSelectionAll()">
+                </th>
+                <th *ngFor="let c of columns">{{ columnMapping[c] || c  | titlecase}}</th>
+                <th *ngIf="!acc && type != 'consumptions'">Statue</th>
+                <th>Actions</th>
+
+            </tr>
+        </thead>
+        <tbody>
+     <tr *ngIf="isAddingNew" class="table-secondary" [formGroup]="form">
+  <td>
+    <input type="checkbox" checked disabled name="checky">
+  </td>
+  <td *ngFor="let c of columns">
+    <select class="form-select" formControlName="veh_id" *ngIf="c =='veh_id'" name="veh_id" id="" [class.is-invalid]="form.get('veh_id')?.invalid && (form.get('veh_id')?.touched || this.invalid)">
+      <!-- Options for veh_id -->
+      <ng-container *ngFor="let v of veh">
+        <option [value]="v.id" *ngIf="v.statue === 'true'">{{v.marque}} {{ v.imma }}</option>
+      </ng-container>
+    </select>
+    <select class="form-select" formControlName="driver_id" [class.is-invalid]="form.get('driver_id')?.invalid && (form.get('driver_id')?.touched   || this.invalid)" *ngIf="c =='driver_id'" name="driver_id">
+      <!-- Options for driver_id -->
+      <ng-container *ngFor="let d of dri">
+        <option [value]="d.id" *ngIf="d.statue === 'true'">{{ d.nom }} {{ d.prenom }}</option>
+      </ng-container>
+    </select>
+    <input class="form-control" formControlName="date" *ngIf="c == 'date'" type="date" [class.is-invalid]="form.get('date')?.invalid && (form.get('date')?.touched  || this.invalid)" name="date">
+    <input *ngIf="c !='veh_id' &&c !='driver_id' && c!='date'" type="text" class="form-control" [class.is-invalid]="form.get(c)?.invalid &&(  form.get(c)?.touched || this.invalid)" formControlName="{{ c }}" name="{{ c }}" placeholder="{{ columnMapping[c] || c | titlecase }}">
+  </td>
+  <td  *ngIf=" !acc && type != 'consumptions'">
+    <select class="form-select" formControlName="statue"  [class.is-invalid]="form.get('statue')?.invalid &&(  form.get('statue')?.touched || this.invalid)"  id="select-statue" name="statue">
+      <option disabled>Statue</option>
+      <option value="true" *ngIf="!miss && type != 'maintenance' && type !='repairs'" >disponible</option>
+      <option value="false" *ngIf="!miss&& type != 'maintenance' && type !='repairs'">non disponible</option>
+      <option value="true" *ngIf="miss ||type ==='maintenance' || type ==='repairs'" selected>Terminée</option>
+      <option value="false" *ngIf="miss ||type ==='maintenance' || type ==='repairs'">En cours</option>
+    </select>
+  </td>
+  <td id="validate">
+    <button (click)="cancel()" id="save">Annuler</button>
+    <button type="submit"  (click)="addNew()" class="ms-1 px-2" id="save">Ok</button>
+  </td>
+  
+</tr>
+
+         
+            <tr   *ngFor="let v of filtered; let i = index" [ngClass]="{'table-secondary' : ids.includes(v.id) }"   class="align-items-center">
+                <th (click)="toggleSelection(v)">
+                    <input type="checkbox" id="check" [checked]="ids.includes(v.id) ||allChecked"   >
+                </th>
+                <ng-container *ngIf="editingIndex !==i">
+                   
+                    <td *ngFor="let c of columns">
+                        <span *ngIf="c=='veh_id'">
+                            {{v.vehicle_marque}} {{v.vehicle_immatricule}}
+                        </span>
+                        <span *ngIf="c=='driver_id' ">
+                                {{v.driver_nom}} 
+                                                    
+                        </span>
+                        <span *ngIf="c=='date' ">
+                                {{v.date  | date:'yyyy-MM-dd' }} 
+                                                    
+                        </span>
+                        <span *ngIf="c!='veh_id' && c!='driver_id' && c!='date' ">
+                            {{ c =='id' ? '#'+ v[c] : v[c]}}
+                        </span>
+
+                    </td>
+                    <td *ngIf="!acc && type !== 'consumptions';">
+
+                        <span   id="green" *ngIf="v.statue === 'true' && !miss && type != 'maintenance' && type !='repairs' ; else elseBlock">
+                            disponible
+                        </span>
+                        <span   id="green" *ngIf="v.statue === 'true' && (miss || type === 'maintenance' || type ==='repairs' ) ; else elsyBlock">
+                            Terminée
+                        </span>
+                        <ng-template #elseBlock>
+                            <span id="red" *ngIf="!miss &&   type !== 'maintenance' && type !=='repairs' ">non disponible</span>
+                        </ng-template>
+                        <ng-template #elsyBlock>
+                            <span id="orange" *ngIf="miss || type === 'maintenance' || type ==='repairs' ">En cours</span>
+                        </ng-template>
+                    </td>
+                    <td class="actions" >
+                        <ng-container>
+                            <img src="../../assets/icons/eye.svg" [ngClass]="{'disabled': isDisabled(v)}" alt="eye icon" *ngIf="isVeh" (click)="onSelectVeh(v)">
+                            <img src="../../assets/icons/edit.svg" [ngClass]="{'disabled': isDisabled(v)}" (click)="editEntity(v,i)" alt="edit icon"  >
+                            <img src="../../assets/icons/trash.svg" [ngClass]="{'disabled': isDisabled(v)}" alt="trash icon" (click)="deleteEntity(v)">
+                        </ng-container>
+
+                        
+                    </td>
+                    
+                
+                </ng-container>
+                <ng-container *ngIf="editingIndex ==i" [formGroup]="form" >
+                    <td *ngFor="let c of columns" >
+                    
+                    <select class="form-select" [class.is-invalid]="form.get('veh_id')?.invalid && (form.get('veh_id')?.touched || this.invalid)"  formControlName="veh_id" *ngIf="c =='veh_id'" name="" id="">
+                     
+                            <ng-container *ngFor="let x of veh">
+                              
+                                <option value="x.id" *ngIf="x.statue === 'true' || x.id == v.veh_id "> {{x.marque}} {{ x.imma }}</option>
+                              </ng-container>
+                        </select>
+                        <select class="form-select" formControlName="driver_id" [class.is-invalid]="form.get('driver_id')?.invalid && (form.get('driver_id')?.touched   || this.invalid)" *ngIf="c =='driver_id'" name="driver_id" >
+
+                            <ng-container *ngFor="let d of dri">
+                                <option value="d.id" *ngIf="d.statue === 'true' || d.id == v.driver_id ">{{ d.nom }} {{ d.prenom }}</option>
+                              </ng-container>                        
+                        </select>
+                        <input class="form-control" *ngIf="c == 'date'" type="date" formControlName="date" [class.is-invalid]="form.get('date')?.invalid && (form.get('date')?.touched  || this.invalid)" value="v.date" >
+
+
+                        <input *ngIf="c !='veh_id' &&c !='driver_id' && c!='date'  " type="text"  class="form-control"  formControlName="{{ c }}" [class.is-invalid]="form.get(c)?.invalid &&(  form.get(c)?.touched || this.invalid)"   >                    
+                        </td>
+               
+                    <td  *ngIf=" !acc && type != 'consumptions'">
+                      <select class="form-select" id="select-statue" name="statue"  formControlName="statue" [class.is-invalid]="form.get('statue')?.invalid && (form.get('statue')?.touched || this.invalid)">
+                        <option disabled>Statue</option>
+                        <ng-container *ngIf="!miss  && type != 'maintenance' && type !='repairs'  ; else falseOption">
+                          <option value="true" [selected]="form.get('statue')?.value === 'true'">disponible</option>
+                          <option value="false" [selected]="form.get('statue')?.value === 'false'">non disponible</option>
+                        </ng-container>
+                        <ng-template #falseOption>
+                          <option value="true" [selected]="form.get('statue')?.value === 'true'">Terminée</option>
+                          <option value="false" [selected]="form.get('statue')?.value === 'false'">En cours</option>
+                        </ng-template>
+                      </select>
+                      
+                      
+                    </td>
+                    <td id="validate">
+                        <button type="submit" (click)="annuler()"  id="save">Annuler</button>
+                        <button type="submit"  (click)="modifier(v)"   class="ms-1 px-2" id="save">Ok</button>
+<!-- (click)="modifEnt(v)" -->
+                    </td>
+                </ng-container>
+            
+            
+            
+            </tr>
+
+
+        </tbody>
+      
+       
+    </table>
+</div>
+<div class="row align-items-center justify-content-between">
+    <div class="col-auto d-flex">
+        <span *ngIf="filtered.length != 0" > Montrant {{ index-9   }} à {{index-10 + filtered.length }} sur {{ entities.length }} véhicules</span>
+    </div>
+    <div class="col-auto d-flex ">
+        <div class="button  " (click)="decreIndex()" [ngClass]="{'disabled' : index==10 }">
+            <img src="../../assets/icons/arrow-left-1.svg"  alt="">
+            Précedent
+        </div>
+        <div class="button  ms-2" (click)="increIndex()" [ngClass]="{'disabled' : filtered.length<10  || index-10 + filtered.length== entities.length  }">
+            
+            Suivant
+            <img src="../../assets/icons/arrow-right-1.svg"  alt="">
+        </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,57 @@
+<div class="container ">
+<a id="logo" [routerLink]="['/dashboard']" routerLinkActive="active"> MedFleet</a>
+
+<ul >
+    <li>
+        <a [routerLink]="['dashboard']" routerLinkActive="active">
+            <img src="../../assets/icons/home2.svg" alt="">
+            <span>Tableau de board</span>
+        </a>
+        <div class="active-marker"></div>
+    </li>
+    <li style="width: 100%;">
+        <a [routerLink]="['vehicles']" routerLinkActive="active">
+            <img src="../../assets/icons/car2.svg" alt="">
+            <span>Véhicules</span>
+        </a>
+    </li>
+    <li style="width: 100%;">
+        <a [routerLink]="['missions']" routerLinkActive="active">
+            <img src="../../assets/icons/mission2.svg" alt="">
+            <span>Missions</span>
+        </a>
+    </li>
+    <li style="width: 100%;">
+        <a [routerLink]="['drivers']" routerLinkActive="active">
+            <img src="../../assets/icons/people2.svg" alt="">
+            <span>Chauffeurs</span>
+        </a>
+    </li>
+    <!-- 
+    <li>
+        <a [routerLink]="['statics']" routerLinkActive="active">
+            <img src="../../assets/icons/diagram2.svg" alt="">
+            <span>Statistiques</span>
+        </a>
+    </li>
+     -->
+        <div class="bottom">
+            <li style="width: 100%;" >
+                <a [routerLink]="['settings']" routerLinkActive="active">
+                    <img src="../../assets/icons/setting2.svg" alt="">
+                    <span>Paramètres</span>
+                </a>
+            </li>
+            <li>
+                <a (click)="logout()" >
+                    <img src="../../assets/icons/logout.svg" alt="">
+                    <span>Se Déconnecter</span>
+                </a>
+            </li>
+               
+        </div>
+</ul>
+
+
+
+</div>

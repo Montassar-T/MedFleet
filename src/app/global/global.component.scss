@@ -1,0 +1,21 @@
+input{
+    background-color: #E8F0FE;
+}
+button{
+    padding: .5em 1em;
+    border-radius: 5px;
+    margin-right: 1em;
+    box-sizing: border-box;
+}
+
+.buttons button:first-child{
+    background-color: #ffffff;
+    color: #0071FF;
+    border: 1px solid #0071FF;
+}
+.buttons button:last-child{
+    background-color: #0071FF;
+    color: #ffffff;
+    border: 1px solid #0071FF;
+}
+

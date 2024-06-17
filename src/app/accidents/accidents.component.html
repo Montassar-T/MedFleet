@@ -1,0 +1,2 @@
+<app-table [type]="'accidents'"  (all)="deleteTab($event)" [new]="new" [acc]="true" [entities]="entities" [filtered]="filtered"  [columns]="['lieu','date']"  [isVeh]="false"  (onDelete)="deleteEntity($event)"  (onSave)="modifEntity($event)" (onAdd)="addNew($event)" ></app-table>
+

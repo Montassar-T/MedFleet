@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <h2>Véhicules</h2>
+    <div class="row ms-1  ">
+        <div class="nav justify-content-between align-items-center">
+        <ul class="col-auto d-flex">
+            <li>
+                <a  [routerLink]="['global']" routerLinkActive="active">Informations génèrales</a>
+            </li>
+            <li>
+               <a [routerLink]="['consumption']" routerLinkActive="active">Consommation</a> 
+            </li>
+            <li> 
+                <a [routerLink]="['maintenance']" routerLinkActive="active">Entretiens</a>
+            </li>
+            <li>
+                <a [routerLink]="['repairs']" routerLinkActive="active">Réparations</a>
+            </li>
+            <li>
+                <a  [routerLink]="['accidents']" routerLinkActive="active">Accidents</a>
+            </li>
+        </ul>
+        <a [routerLink]="['/vehicles']" routerLink="active" class="col-auto">
+            <img src="../../assets/icons/x.svg" alt="">
+        </a>
+        </div>
+        
+    </div>
+
+</div>
+<div class="container-fluid">
+    <router-outlet [id]="vehicleId">
+
+    </router-outlet>
+</div>

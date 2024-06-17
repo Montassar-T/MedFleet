@@ -1,0 +1,115 @@
+<div class="container-fluid">
+    <h2 class="mb-4">Tableau de board</h2>
+    <div class="row gx-2 ">
+       
+            
+        <div class="card col mx-2 ">
+            <div class="head">
+                 <span>Totale des missions</span>
+                 <img src=". ./../assets/icons/driving.svg" alt="">
+            </div>
+           
+            <span id="num">{{ newValue ||0 }}</span>
+            <span>{{percentageDifference | number:'1.2-2'}}% du moins précedent</span>
+        </div>
+
+        <div class="card col mx-2">
+            <div class="head">
+                 <span>Consommation de carburant</span>
+                 <img src="../../assets/icons/trend-up.svg" alt="">
+            </div>
+           
+            <span id="num">{{ ttC|number:'1.0-0'  ||0 }} dt</span>
+            <span>{{prTtc | number:'1.2-2'}}% du moins précedent</span>
+        </div>
+        
+        <div class="card col mx-2 ">
+            <div class="head">
+                 <span>Coût de réparations</span>
+                 <img src="../../assets/icons/set.svg" alt="">
+            </div>
+           
+            <span id="num">{{ttr|number:'1.0-0'  ||0}} dt</span>
+            <span>{{prTtr | number:'1.2-2'}}% du moins précedent</span>
+        </div>
+        <div class="card col mx-2">
+            <div class="head">
+                 <span>Coût d'Entretiens</span>
+                 <img src="../../assets/icons/dollar-square.svg" alt="">
+            </div>
+           
+            <span id="num">{{ttM |number:'1.0-0' }} dt</span>
+            <span>{{prTtm | number:'1.2-2'}}% du moins précedent</span>
+        </div>
+        
+ 
+    </div>
+
+    <div class="row g-2 mt-2 mb-1 ">
+        
+        <div class="line-parent col-8  mx-2">
+            <div id="title">
+                Consommation mensuelle du carburant en Dinar
+            </div> 
+            
+            <canvas id="line" width="100%" height="100%"  >
+                {{line}}
+            </canvas>
+        </div>
+        <div class="pie-parent col-4 mx-2 ">
+            <div id="title">
+                Taux de voitures hors service           
+             </div> 
+            <div class="box">
+                <div id="pour">
+                    {{s |number:'1.0-0' || 0}}%
+                 </div>
+                  <canvas id="pie"  >
+                
+                    {{pie}}
+                </canvas>
+            </div>
+           
+        </div>
+    </div>
+   <!--  -->
+    <div class="row mx-2 ">
+        <span  id="head">Missions récentes</span>
+        <table class="table">
+            <thead>
+            <tr class="">
+                <th scope="col">#</th>
+                <th>Véhicule</th>
+                <th>Immatricule</th>
+                <th>Chauffeur</th>
+                <th>Destination</th>
+                <th>Statue</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody  >
+          
+            <tr *ngFor="let m of missions">
+                <td scope="row">{{m.id}}</td>
+            <td>{{m.vehicle_marque}}</td>
+            <td>{{m.vehicle_immatricule}}</td>
+            <td>{{m.driver_nom}}</td>
+            <td>{{m.dest}}</td>
+            <td >
+                <span id="green" *ngIf="m.statue == 'true'; else orange" >Terminée</span>
+                <ng-template #orange>
+                    <span id="orange">En cours</span>
+                </ng-template>
+            </td>
+            <td>{{m.date |date:'yyyy-MM-dd'}}</td>
+            
+            </tr>
+    
+        </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+

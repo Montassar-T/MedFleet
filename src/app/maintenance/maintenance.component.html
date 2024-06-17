@@ -1,0 +1,1 @@
+<app-table [type]="'maintenance'" (all)="deleteTab($event)"   [new]="new" [entities]="entities" [filtered]="filtered"  [columns]="['type','kilo','cout','date']" [columnMapping]="{'cout':'coût','kilo':'kilométrage'}" [isVeh]="false"  (onDelete)="deleteEntity($event)"  (onSave)="modifEntity($event)" (onAdd)="addNew($event)" ></app-table>

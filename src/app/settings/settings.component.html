@@ -1,0 +1,121 @@
+<div class="cont d-flex flex-column">
+    
+      
+    <h2>Paramètres</h2>
+
+    <form class="my-2"  >
+    
+     
+            <span>
+                Mon profil
+            </span>
+      
+       
+       
+        <div class="x row">
+            <div class="img-container col-5">
+                <div id="tooltip">
+                    Changer photo
+                </div>  
+                
+               
+                          
+                <img [src]="url || '../../assets/img/user.png'" alt="User Profile" referrerpolicy="no-referrer">
+            </div>
+            <div class="inputs ms-3 col-7  f  " [formGroup]="profilForm">
+                <div class="row ">
+            <div class="input-group col-6">
+            <div class="input-container" >
+           
+                <input type="text" name="nom" (input)="touch()"id="nom" [class.is-invalid]="name?.invalid && name?.touched" formControlName="name"    >
+                 <label for="nom">Nom complet</label>
+            </div>
+            <div *ngIf="profilForm.get('name')?.invalid && profilForm.get('name')?.touched">
+                <div *ngIf="profilForm.get('name')?.errors?.['required']">Nom requis.</div>
+
+              </div>
+
+            </div>
+         
+          
+          
+        </div>
+        <div class="row">
+            <div class="input-group   col-12">
+                <div class="input-container">
+                 <input type="text" name="org" id="org" (input)="touch()"  [class.is-invalid]="organization?.invalid && organization?.touched"  formControlName="organization"  >
+                 <label for="org">Organisation</label>
+ 
+             </div>
+             <div *ngIf="profilForm.get('organization')?.invalid && profilForm.get('organization')?.touched">
+                 <div *ngIf="profilForm.get('organization')?.errors?.['required']">Organisation requis.</div>
+             </div>
+             </div>
+      
+        </div>
+        <div class="row">
+            <div class="input-group  col-12  ">
+                <div class="input-container" >
+               
+                <input type="email" name="email" (input)="touch()" id="email" [class.is-invalid]="email?.invalid && email?.touched"  formControlName="email"  >
+                <label for="email">Email</label>
+            </div>
+            <div class="message" *ngIf="profilForm.get('email')?.invalid && profilForm.get('email')?.touched ">
+                <div *ngIf="profilForm.get('email')?.errors?.['required']">Email requis.</div>
+                <div *ngIf="profilForm.get('email')?.errors?.['email']">Format d'email invalide.</div>
+    
+              </div>
+            </div>
+          
+        </div>
+        <div class="row">
+            <div  class="input-group  col-12" [formGroup]="passForm">
+                <div class="input-container" >
+                    <img src="../../assets/icons/show.svg" id="show" (click)="show()" alt="">
+<!--   -->
+                    <input [type]="hide ? 'password' : 'text'"   (input)="touch()"  name="mdp"  [class.is-invalid]="passForm.get('password')?.invalid && passForm.get('password')?.value?.length > 0"  formControlName="password" (input)="touch()" required>
+                    <label for="org">Nouveau mot de passe</label>
+                    
+                    </div>
+                    <div class="message" *ngIf="passForm.get('password')?.invalid && passForm.get('password')?.value.length > 0 ">
+                        <div *ngIf="passForm.get('password')?.errors?.['required']">Mot de passe requis.</div>
+                        <div *ngIf="passForm.get('password')?.hasError('minlength')">Très court.</div>
+            
+                      </div>
+                </div>
+        </div>
+        <div class="row"> 
+             <div class="buttons  col-12" >
+            <button  (click)=" cancelUpdate()" [disabled]="!touched || same">Annuler</button>
+            <button type="submit" (click)="update()" [disabled]=" (same && emptyPass) || ( !same && emptyPass && profilForm.invalid) || (same && !emptyPass && passForm.invalid)" >Enregistrer</button>
+    </div></div>
+   
+             <div class="row">
+            <div class="b">
+    <p>Vous pouvez supprimer définitivement ce compte et toutes ses données ci-dessous.
+    </p>
+    
+    <span id="d" (click)="deleteAccount()">
+        Supprimer le compte
+
+    </span>
+</div>
+</div>
+
+
+    
+    </div>
+        </div>
+    
+       
+ 
+        
+
+    
+   
+</form>
+
+
+
+
+</div>

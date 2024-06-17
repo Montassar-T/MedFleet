@@ -1,0 +1,5 @@
+<div class="container-fluid">
+    <h2>Véhicules</h2>      
+    <app-table [type]="'véhiclues'"  (changed)="c()" (all)="deleteTab($event)" [new]="new"  [entities]="entities" [filtered]="filtered" [columns]="['imma','marque','type','kilometrageAct']" [columnMapping]="{'imma': 'Immatricule', 'kilometrageAct': 'Kilometrage Actuel' }" [isVeh]="true" (onDelete)="deleteEntity($event)"  (onSave)="modifEntity($event)" (onAdd)="addNew($event)" ></app-table>
+ 
+</div>

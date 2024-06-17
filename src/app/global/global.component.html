@@ -1,0 +1,47 @@
+<div class="container-fluid  py-5" [formGroup]="form" >
+
+<div class="row">
+    <div class="col">  
+            <label for="">Marque</label>
+            <input  class="form-control" (input)="change()" formControlName="marque"  value="{{vehicle.marque}}" type="text"  >
+    </div>
+    <div class="col">  
+            <label for="">Type</label>
+            <input  class="form-control" (input)="change()" formControlName="type" type="text" >
+    </div>
+    <div class="col">  
+            <label for="">Immatricule</label>
+            <input  class="form-control" (input)="change()" formControlName="imma"   type="text" >
+    </div>
+   
+</div>
+<div class="row my-5">
+    <div class="col-auto">  
+            <label for="">Statue</label>
+            <input  class="form-control" (input)="change()" formControlName="statue"    type="text" >
+    </div>
+    
+</div>
+<div class="row mb-5">
+    <div class="col-auto">  
+            <label for="">Kilométrage Actuel</label>
+            <input  class="form-control"  type="text"  (input)="change()" formControlName="kilometrageAct" >
+    </div>
+    
+    
+</div>
+<div class="row">
+        <div class="col-auto">  
+                <label for="">Kilométrage de dernier entretien</label>
+                <input  disabled class="form-control"  type="text"  (input)="change()" value="{{ k || 'Pas encore indicé'}}">
+        </div>
+    
+</div>
+<div class="row my-5">
+    <div class="col-auto buttons">
+        <button [ngClass]="{'disabled' : !changed ||same}" (click)="navigate()">Annuler</button>
+        <button [ngClass]="{'disabled' : !changed || same }"  (click)="save()">Enregistrer</button>
+    </div>
+   
+</div>
+</div>

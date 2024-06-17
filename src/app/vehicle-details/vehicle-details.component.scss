@@ -1,0 +1,33 @@
+ul{
+    list-style: none;
+    padding-inline: 0;
+    gap: .5em;
+    height: 100%;
+}
+ul li{
+    
+    align-self:end;
+}
+
+
+img{
+    width: 30px;
+
+}
+ul a{
+    text-decoration: none;
+    color: #353535;
+    position: relative;
+
+
+       
+
+}
+ul li a.active {
+ border-bottom: 1px solid #353535;
+
+}
+.selected{
+    font-weight: bold;
+    border-bottom: 2px solid #353535;
+}

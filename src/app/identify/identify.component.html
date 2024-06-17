@@ -1,0 +1,31 @@
+<div class="container-fluid ">
+    <h2 id="logo" [routerLink]="['/login']" routerLinkActive="active" >MedFleet</h2>
+    <div class="box">
+        <img src="../../assets/icons/lock-circle.svg" alt="Lock Circle Icon" width="160" height="160" >
+        <span>Problèmes de connexion ?</span>
+        <p>Entrez votre adresse e-mail ou votre nom d'utilisateur,et nous vous enverrons un code pour récupérer votre compte.</p>
+       <form  (ngSubmit)="identify()" [formGroup]="Form">
+        <div class="input-group">
+            <div class="input-container">
+                <input type="email" [class.is-invalid]="(email?.invalid && email?.touched ) || exists == false" formControlName="email"  (input)="touched()"  required >
+                <label  for="email">Email</label>
+            </div>
+            <div class="message" *ngIf="Form.get('email')?.invalid && Form.get('email')?.touched" >
+                <div *ngIf="Form.get('email')?.errors?.['required']">Email requis.</div>
+                <div *ngIf="Form.get('email')?.errors?.['email']">Format d'email invalide.
+                </div>
+              </div>
+            
+              <div class="message" *ngIf="exists == false">Email n'existe pas.</div>
+
+        </div>
+ <button id="next" type="submit" [disabled]="Form.invalid || isLoading">
+    <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    <span *ngIf="!isLoading">Continuer</span>
+  </button>       </form>
+        <div class="bottom">
+            <a [routerLink]="['/login']" routerLinkActive="active" >Revenir à l'écran de connexion</a>
+        </div>
+    </div>
+    <span id="rights">all rights reserved © 2024</span>
+</div>
