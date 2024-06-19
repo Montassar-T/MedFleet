@@ -1,26 +1,53 @@
 # MedFleet
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.6.
+MedFleet is a vehicle management system designed to streamline fleet operations, manage drivers, and track missions efficiently.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Vehicle Management**: Keep track of all vehicles in your fleet, including their status, maintenance history, and availability.
+- **Driver Management**: Manage drivers.
+- **Mission Tracking**: Track missions, assign vehicles and drivers.
+- **User-friendly Interface**: Intuitive and easy-to-use interface.
+- **Data Security**: Ensure data security and privacy and encryption.
 
-## Code scaffolding
+## Technologies Used
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Frontend**:
+  - Angular
+  - Bootstrap
+  - Chart.js
 
-## Build
+- **Backend**:
+  - Node.js
+  - Express.js
+  - MySQL
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Installation
 
-## Running unit tests
+1. Clone the repository:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+   ```bash
+   git clone https://github.com/Montassar-T/MedFleet.git
+   
+2. Install dependencies:
 
-## Running end-to-end tests
+   ```bash
+   cd MedFleet
+   npm install
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+2. Set up the database:
+
+ - Create a MySQL database and configure the connection settings in your backend configuration file.
+
+   
+## Contributing
+
+We welcome contributions to improve MedFleet. To contribute, please follow these guidelines:
+- Fork the repository.
+- Create a new branch (`git checkout -b feature/improvement`).
+- Commit your changes (`git commit -am 'Add new feature'`).
+- Push to the branch (`git push origin feature/improvement`).
+- Create a new Pull Request.
 
 ## Further help
 
