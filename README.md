@@ -39,6 +39,21 @@ MedFleet is a vehicle management system designed to streamline fleet operations,
 
  - Create a MySQL database and configure the connection settings in your backend configuration file.
 
+3. Run the Backend Server:
+
+    ```bash
+    npm run start-backend
+
+4. Run the Frontend Server:
+
+    ```bash
+    npm run start-frontend
+     
+5. Concurrently Start Both Servers:
+
+     ```bash
+     npm start
+     
    
 ## Contributing
 
