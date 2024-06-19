@@ -35,21 +35,23 @@ MedFleet is a vehicle management system designed to streamline fleet operations,
    cd MedFleet
    npm install
 
-2. Set up the database:
+3. Set up the database:
 
  - Create a MySQL database and configure the connection settings in your backend configuration file.
+   
 
-3. Run the Backend Server:
+4. Run the Backend Server:
 
     ```bash
     npm run start-backend
 
-4. Run the Frontend Server:
+
+5. Run the Frontend Server:
 
     ```bash
     npm run start-frontend
      
-5. Concurrently Start Both Servers:
+6. Concurrently Start Both Servers:
 
      ```bash
      npm start
